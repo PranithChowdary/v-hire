@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     minHeight: 400
   },
   gridList: {
-    width: '100%',
+    width: '85%', // Banner size 508 x 215
     minHeight: 200,
     padding: '16px 0 0px'
   },
