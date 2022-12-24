@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import HomeIcon from '@material-ui/icons/Home'
+import { CgMenu } from "react-icons/cg";
 import Library from '@material-ui/icons/LocalLibrary'
 import Button from '@material-ui/core/Button'
 import auth from './../auth/auth-helper'
@@ -24,6 +25,7 @@ const isPartActive = (history, path) => {
 const Menu = withRouter(({history}) => (
   <AppBar position="fixed" style={{zIndex:12343455}}>
     <Toolbar>
+      <CgMenu fontSize={26}/>
       <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             Vignan Hire
       </Typography>
