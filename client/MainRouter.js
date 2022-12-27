@@ -13,6 +13,7 @@ import NewCourse from './course/NewCourse'
 import Course from './course/Course'
 import EditCourse from './course/EditCourse'
 import Editor from './core/editor'
+import CollabEditor from './core/CollabEditor'
 import MyCourses from './course/MyCourses'
 import Enrollment from './enrollment/Enrollment'
 

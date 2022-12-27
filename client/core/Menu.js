@@ -1,20 +1,18 @@
 import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import HomeIcon from '@material-ui/icons/Home'
-import { CgMenu } from "react-icons/cg";
-import Library from '@material-ui/icons/LocalLibrary'
 import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton';
 import auth from './../auth/auth-helper'
+import Home from '@material-ui/icons/Home'
+import Typography from '@material-ui/core/Typography'
 import {Link, withRouter} from 'react-router-dom'
 
 const isActive = (history, path) => {
   if (history.location.pathname == path)
-    return {color: '#efefef'}
+    return {textAlign: 'center',fontSize: '16px',margin: '4px 2px'}
   else
-    return {color: '#fffde7'}
+    return {color: 'black'}
 }
 const isPartActive = (history, path) => {
   if (history.location.pathname.includes(path))
@@ -22,21 +20,20 @@ const isPartActive = (history, path) => {
   else
     return {color: '#616161', backgroundColor: '#ffffff', border:'1px solid #000000', marginRight:10}
 }
+
 const Menu = withRouter(({history}) => (
   <AppBar position="fixed" style={{zIndex:12343455}}>
     <Toolbar>
-      <CgMenu fontSize={26}/>
-      <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+      <Typography variant="h5" style={{'color':'white','fontSize':'25px','fontFamily':'sans-serif'}}>
             Vignan Hire
       </Typography>
-      <div>
+      <IconButton>
         <Link to="/">
-          <IconButton aria-label="Home" style={isActive(history, "/")}>
-            <HomeIcon/>
-          </IconButton>
+        <Home style={{'fontSize':'30px','color':'white'}}></Home>
         </Link>
-      </div>
-      <div style={{'position':'absolute', 'right': '10px'}}><span style={{'float': 'right'}}>
+      </IconButton>
+      <div style={{'position':'absolute', 'right': '10px'}}>
+        <span style={{'float': 'right'}}>
       {
         !auth.isAuthenticated() && (<span>
           <Link to="/signup">
@@ -54,6 +51,9 @@ const Menu = withRouter(({history}) => (
           {auth.isAuthenticated().user.educator && (<Link to="/teach/courses"><Button style={isPartActive(history, "/teach/")}>Teach</Button></Link>)}
           <Link to={"/editor/" + auth.isAuthenticated().user._id}>
             <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>Editor</Button>
+          </Link>
+          <Link to={"https://3000-vignancse-collaborative-gnus8d2vuuh.ws-us80.gitpod.io/" + auth.isAuthenticated().user._id}>
+            <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>Collab Editor</Button>
           </Link>
           <Link to={"/user/" + auth.isAuthenticated().user._id}>
             <Button style={isActive(history, "/user/" + auth.isAuthenticated().user._id)}>My Profile</Button>
